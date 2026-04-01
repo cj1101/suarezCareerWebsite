@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Briefcase, FolderKanban, User } from "lucide-react";
+import { Home, Briefcase, FolderKanban, User, FileText, Terminal, Lock, ExternalLink } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -11,6 +11,7 @@ export default function Navigation() {
     { href: "/", label: "Home", icon: Home },
     { href: "/experience", label: "Experience", icon: Briefcase },
     { href: "/projects", label: "Projects", icon: FolderKanban },
+    { href: "/blog", label: "Blog", icon: FileText },
     { href: "/about", label: "About", icon: User },
   ];
 
@@ -43,6 +44,25 @@ export default function Navigation() {
                 </Link>
               );
             })}
+
+            {/* Openclaw Dashboard — external private tool, opens in new tab */}
+            <a
+              href="/openclaw/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Openclaw Dashboard — requires authentication"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:scale-105 border border-transparent hover:border-amber-200 dark:hover:border-amber-800"
+            >
+              <span className="relative">
+                <Terminal size={18} />
+                <Lock
+                  size={9}
+                  className="absolute -bottom-0.5 -right-1 stroke-[2.5]"
+                />
+              </span>
+              <span className="hidden sm:inline">Openclaw</span>
+              <ExternalLink size={12} className="hidden sm:inline opacity-60" />
+            </a>
           </div>
         </div>
       </div>
